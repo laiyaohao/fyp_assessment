@@ -15,12 +15,10 @@ def englishify(number):
     twe_to_nint = {"2": "Twenty", "3": "Thirty", "4": "Fourty", "5": "Fifty", \
         "6": "Sixty", "7": "Seventy", "8": "Eighty", "9": "Ninety"}
     english = ""
+    
     def twoorless(numbe):
         engl = ""
         if len(numbe) < 2:
-            # if numbe == '0':
-            #     engl += "Zero"
-            # else:
             engl += zero_to_nine[numbe]
         elif numbe[0] == '0':
             engl += zero_to_nine[numbe[1]]
@@ -28,29 +26,22 @@ def englishify(number):
             engl += ten_to_nineteen[numbe]
         else:
             engl += twe_to_nint[numbe[0]]
+            engl += " "
             engl += zero_to_nine[numbe[1]]
         return engl
+
     def threedigit(numb):
         eng = ""
-        # if numb[0] == '0':
         eng += zero_to_nine[numb[0]]
         if eng:
-            eng += " Hundred "
+            eng += " Hundred"
         else:
             pass
         lasttwodigits = twoorless(numb[1:])
         if lasttwodigits:
-            eng += "And "
+            eng += " And "
         else:
             pass
-        # if numb[1] == '1':
-        #     eng += ten_to_nineteen[numb]
-        # elif numb[1] != '0':
-        #     eng += twe_to_nint[numb[1]]
-        #     eng += zero_to_nine[numb[2]]
-        # else:
-            
-        #     eng += zero_to_nine[numb[2]]
         eng += lasttwodigits
         return eng
     
@@ -64,20 +55,16 @@ def englishify(number):
     
     if num_in_str == '0':
         english += "Zero"
-    # elif len_of_num <= 2:
-    #     english += twoorless(num_in_str)
-    # elif len_of_num == 3:
-    #     english += threedigit(num_in_str)
     elif len_of_num <= 3:
         english += threeorless(num_in_str)
     else:
         lastthree = num_in_str[-3:]
         firstn = num_in_str[-len_of_num:-3]
         english += threeorless(firstn)
-        english += " Thousand "
+        english += " Thousand"
         lastthreedigits = threeorless(lastthree)
-        if lastthreedigits:
-            english += ","
+        if "Hundred" in lastthreedigits:
+            english += ", "
         else:
             pass
         english += lastthreedigits
@@ -85,7 +72,6 @@ def englishify(number):
 
     
     return english       
-    # elif len_of_num == 2:
+    
 
 
-print(englishify(333333))
