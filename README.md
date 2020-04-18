@@ -24,3 +24,17 @@ The first thing I test in the test cases are the limits, which is 0 and 999999. 
 
 ###### Instrucions to run the srcipts:
 Both files can be open directly for examination of the code and the test cases. For you to input a number, just uncomment the line of code that contains 'user_input()' and re-run the script.
+
+### Question 2
+
+###### Explain the pipeline design and its usage
+I used Tensorflow Estimator to build the pipeline. I first took out the target, 'class' so that the training will not be biased with the target. Then, I use the train_test_split function to split the data into 2: one for training of the model and the other for testing. I extract the column names, which is crucial for the use of the feature column in the estimator LinearClassifier method, which helps me build the logistic regrerssion model.
+
+###### Explain your choice of model
+I have chosen to use the logistic regression model as it is a baseline for other more complex algorithms.
+
+###### Provide an evaluation of the model developed
+The model can unfortunately only around 55 (+- 5)% correct on the credit card csv file, and i think one of the main improvements that can be made is to reduce the repetitions in the 'Amount' column, which I think can somehow make the predictions more accurate. Another improvements that can be made is to list different combinations of the abstracted features to train the model, but this would increase the amount of time needed.
+
+###### Instructions to run the scripts
+There are two files in the mlp folder, namely module_script and test_script. Ensure that the csv file you want to test is in the same folder. In the test_script file, enter the file name in the tf_estimator function, uncomment that line and run the script.
